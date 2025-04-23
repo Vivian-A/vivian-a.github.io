@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivian Acker | Software Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Base Reset & Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    
+        :root {
+            --primary-color: #2ecc71;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+        }
+    
+        /* Utility Classes */
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 2rem;
+        }
+    
+        /* Navigation */
+        .navbar {
+            background: var(--dark-color);
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+    
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+    
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+    
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+    
+        /* Hero Section */
+        .hero {
+            background: url('img/herobackground.png') center/cover fixed;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            position: relative;
+        }
+    
+        .hero-content {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+    
+        .hero h1, .hero p {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+    
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+    
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+    
+        /* Projects Section */
+        .projects {
+            padding: 5rem 0;
+            background: var(--light-color);
+        }
+    
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+    
+        .project-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            gap: 1rem;
+        }
+    
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+    
+        .project-image-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+    
+        .project-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+    
+        .project-image:hover {
+            transform: scale(1.05);
+        }
+    
+        .tech-stack {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+    
+        .tech-stack span {
+            background: var(--light-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+    
+        /* Skills Section */
+        .skills {
+            padding: 5rem 0;
+            background: white;
+        }
+    
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+    
+        .skill-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 1.5rem;
+    background: var(--light-color);
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+.skill-item:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.skill-item i {
+    font-size: 1.2rem;
+    width: 25px;
+    text-align: center;
+}
+    
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+        }
+    
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+    
+        /* Footer */
+        .footer {
+            background: #1a252f;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+    
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+    
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+    
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <h1>Vivian Acker</h1>
+            <div class="nav-links">
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Full Stack Developer</h1>
+                <p>Building digital solutions that make a difference</p>
+                <a href="#contact" class="btn">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="project-grid">
+                <!-- Project Cards -->
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="img/xpod.png" alt="Mars VR Lab XPod Interface" class="project-image">
+                    </div>
+                    <h3>Mars VR Lab XPod</h3>
+                    <p>Worked on it from day -1, the flagship Mars VR Lab software, designed to help children learn to use powered wheelchairs.
+                        Created most of the UI in the picture using Dear ImGui, as well as some more stuff that isn't really visible like performance tracing, and other useful debugging tools.</p>
+                    <div class="tech-stack">
+                        <span>Unity/C#</span> 
+                        <span>C++</span>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="img/cloudportal.png" alt="XPod Cloud Portal Dashboard" class="project-image">
+                    </div>
+                    <h3>Mars VR Lab XPod Cloud Portal</h3>
+                    <p>XPod's backend for keeping track of data created by the XPod application.
+                        Worked on most of it solo, includes a chat app for clinicians to create appointments as well.</p>
+                    <div class="tech-stack">
+                        <span>Laravel </span>  
+                        <span>Livewire</span> 
+                        <span>Postgres</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image-container">
+                        <img src="img/herobackground.png" alt="Can't take a picture of GCMS." class="project-image">
+                    </div>
+                    <h3>Global Captive Management System</h3>
+                    <p>Worked on legacy code to modernise and update it to a new, web based age.</p>
+                    <div class="tech-stack">
+                        <span>VB.NET</span> 
+                        <span>ExtJS</span>
+                    </div>
+                </div>
+                <!-- Add more project cards HERE -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <!-- Programming Languages -->
+                <div class="skill-item">
+                    <i class="fab fa-js"></i>
+                    <span>JavaScript</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-code"></i>
+                    <span>C#</span>
+                </div>
+    
+                <!-- Frameworks & Engines -->
+                <div class="skill-item">
+                    <i class="fab fa-unity"></i>
+                    <span>Unity</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fab fa-laravel"></i>
+                    <span>Laravel</span>
+                </div>
+    
+                <!-- Tools & Practices -->
+                <div class="skill-item">
+                    <i class="fas fa-cogs"></i>
+                    <span>Legacy Code</span>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-robot"></i>
+                    <span>Selenium</span>
+                </div>
+    
+                <!-- Add more skills as needed -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Want To Get In Touch?</h2>
+            <p>Send me an email at vivian@acker.tech!</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/Vivian-A"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/mitchell-a/"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>&copy; 2025 Vivian Acker. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
